@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TeamJoin Sign Up</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/notifications.css">
+  <meta name="description" content="Create your TeamJoin account">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+<body>
+  <div id="custom-toast" class="custom-toast"></div>
+  <div class="container" role="main">
+    <button class="dark-mode-toggle" id="dark-mode-toggle" aria-label="Toggle dark mode">
+      <img src="/asset/dark-mode-icon.svg" alt="Dark Mode Icon" class="dark-mode-icon" id="dark-mode-icon">
+    </button>
+    <div class="logo">
+      <img src="/logo.svg" alt="TeamJoin Logo" width="60" height="60">
+    </div>
+    <h2>Create Your Account</h2>
+    <form autocomplete="on" class="form" id="signup-form">
+      <div class="input-group">
+        <input type="text" id="fullname" name="full_name" placeholder="Full Name" aria-label="Full Name" autocomplete="name" required>
+        <div class="error-message" id="fullname-error"></div>
+      </div>
+      <div class="input-group">
+        <input type="email" id="email" name="email" placeholder="Email" aria-label="Email" autocomplete="username" required>
+        <div class="error-message" id="email-error"></div>
+      </div>
+      <div class="input-group">
+        <input type="password" placeholder="Password" name="password" aria-label="Password" autocomplete="new-password" required id="password">
+        <div class="error-message" id="password-error"></div>
+      </div>
+      <div class="input-group">
+        <input type="password" placeholder="Confirm Password" aria-label="Confirm Password" autocomplete="new-password" required id="confirm-password">
+        <div class="error-message" id="confirm-password-error"></div>
+      </div>
+      <button class="btn" type="submit">
+        Sign Up
+      </button>
+    </form>
+    <form autocomplete="on" class="form" id="verify-otp-form" style="display: none;">
+        <input type="hidden" id="otp-email" name="email">
+        <div class="input-group">
+            <input type="text" id="otp" name="token" placeholder="Enter 6-digit OTP" maxlength="6" required class="otp-input-single">
+            <div class="error-message" id="otp-error"></div>
+        </div>
+        <button class="btn" type="submit">
+            Verify OTP
+        </button>
+    </form>
+    <a href="/" class="link">Already have an account? Login</a>
+  </div>
+  
+  
+  <script src="/js/auth.js"></script>
+</body>
+</html>

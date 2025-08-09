@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forgot Password</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/notifications.css">
+  <meta name="description" content="Reset your TeamJoin password">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+<body>
+  <div id="custom-toast" class="custom-toast"></div>
+  <div class="container" role="main">
+    <button class="dark-mode-toggle" id="dark-mode-toggle" aria-label="Toggle dark mode">
+      <img src="/asset/dark-mode-icon.svg" alt="Dark Mode Icon" class="dark-mode-icon" id="dark-mode-icon">
+    </button>
+    <div class="logo">
+      <img src="/logo.svg" alt="TeamJoin Logo" width="60" height="60">
+    </div>
+    <h2>Reset Password</h2>
+    <form autocomplete="on" class="form" id="forgot-form">
+      <div class="input-group">
+        <input type="email" id="email" name="email" placeholder="Enter your email" aria-label="Email" autocomplete="username" required>
+        <div class="error-message" id="email-error"></div>
+      </div>
+      <button class="btn" type="submit">
+        Send Reset Link
+      </button>
+    </form>
+    <a href="/" class="link">Back to Login</a>
+  </div>
+  
+  <script src="/js/auth.js"></script>
+</body>
+</html>

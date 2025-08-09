@@ -1,0 +1,270 @@
+/* General Styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f7faff;
+  color: #2a5298;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background: #181818;
+  color: #e0e0e0;
+}
+
+/* Container Styles */
+.container {
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 370px;
+  max-width: 95vw;
+}
+
+body.dark-mode .container {
+  background: #242424;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Logo Styles */
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Heading Styles */
+h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #2a5298;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+body.dark-mode h2 {
+  color: #ffffff;
+}
+
+/* Form Styles */
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Input Group Styles */
+.input-group {
+  margin-bottom: 1.2rem;
+}
+
+/* Input Styles */
+input {
+  width: 100%;
+  padding: 0.9rem;
+  border: 1px solid #cfd8dc;
+  border-radius: 5px;
+  background: #f7faff;
+  font-size: 1rem;
+  color: #2a5298;
+  outline: none;
+  height: 3rem;
+}
+
+input:focus {
+  border: 1px solid #2a5298;
+  background: #e3ecfa;
+}
+
+body.dark-mode input {
+  background: #333333;
+  color: #ffffff;
+  border: 1px solid #555555;
+}
+
+body.dark-mode input:focus {
+  border: 1px solid #ffffff;
+  background: #444444;
+}
+
+/* Error handling */
+.error-message {
+  color: #e53935;
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+  min-height: 1rem;
+  visibility: hidden;
+}
+
+.error-message.visible {
+  visibility: visible;
+}
+
+body.dark-mode .error-message {
+  color: #ff6f6f;
+}
+
+/* Button Styles */
+.btn {
+  width: 100%;
+  padding: 0.9rem;
+  background: #2a5298;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  height: 3rem;
+  margin-bottom: 1rem;
+}
+
+.btn:hover {
+  background: #1e3c72;
+}
+
+body.dark-mode .btn {
+  background: #555555;
+}
+
+body.dark-mode .btn:hover {
+  background: #777777;
+}
+
+/* Link Styles */
+.link {
+  display: block;
+  text-align: center;
+  margin-top: 1rem;
+  color: #2a5298;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #1e3c72;
+}
+
+body.dark-mode .link {
+  color: #e0e0e0;
+}
+
+body.dark-mode .link:hover {
+  color: #bbbbbb;
+}
+
+/* Dark mode toggle */
+.dark-mode-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.dark-mode-icon {
+  width: 20px;
+  height: 20px;
+}
+
+
+
+/* Button Loading State */
+.btn.loading {
+    position: relative;
+    color: transparent !important;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dots-loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px; 
+}
+
+.dots-loader:before,
+.dots-loader:after,
+.dots-loader span {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: #fff;
+    border-radius: 50%;
+    margin: 0 5px;
+    animation: dots-bounce 1.4s infinite;
+}
+
+.dots-loader:before {
+    animation-delay: 0s;
+}
+
+.dots-loader span {
+    animation-delay: 0.2s;
+}
+
+.dots-loader:after {
+    animation-delay: 0.4s;
+}
+
+@keyframes dots-bounce {
+    0%, 80%, 100% {
+        transform: scale(0);
+    }
+    40% {
+        transform: scale(1.0);
+    }
+}
+
+/* Dark mode specific styles for loader */
+body.dark-mode .dots-loader:before,
+body.dark-mode .dots-loader:after,
+body.dark--mode .dots-loader span {
+    background-color: #fff;
+}
+
+.success-message {
+    display: none; /* Initially hidden */
+    text-align: center;
+    padding: 2rem;
+}
+
+.success-message .success-icon {
+    margin-bottom: 1rem;
+}
+
+.success-message h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #2a5298;
+}
+
+.success-message p {
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+body.dark-mode .success-message h3 {
+    color: #ffffff;
+}
+
+body.dark-mode .success-message p {
+    color: #e0e0e0;
+}
+
+.btn-return {
+    display: inline-block;
+    width: auto;
+    padding: 0.8rem 1.5rem;
+}
