@@ -2,10 +2,7 @@
   "builds": [
     {
       "src": "teamjoin_platform/package.json",
-      "use": "@vercel/static-build",
-      "options": {
-        "outputDirectory": "teamjoin_platform/dist"
-      }
+      "use": "@vercel/static-build"
     },
     {
       "src": "api/main.py",
