@@ -1,0 +1,25 @@
+{
+  "builds": [
+    {
+      "src": "teamjoin_platform/package.json",
+      "use": "@vercel/static-build",
+      "options": {
+        "outputDirectory": "teamjoin_platform/dist"
+      }
+    },
+    {
+      "src": "api/main.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/main.py"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/teamjoin_platform/dist/index.html"
+    }
+  ]
+}
