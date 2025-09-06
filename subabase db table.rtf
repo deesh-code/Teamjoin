@@ -1,0 +1,60 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red202\green202\blue202;\red24\green24\blue24;\red70\green137\blue204;
+\red212\green212\blue212;\red100\green117\blue135;\red36\green168\blue107;\red83\green83\blue83;}
+{\*\expandedcolortbl;;\cssrgb\c83137\c83137\c83137;\cssrgb\c12157\c12157\c12157;\cssrgb\c33725\c61176\c83922;
+\cssrgb\c86275\c86275\c86275;\cssrgb\c46667\c53333\c60000;\cssrgb\c14118\c70588\c49412;\cssrgb\c40000\c40000\c40000;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+\
+CREATE TABLE public.ideas (\
+  id uuid NOT NULL DEFAULT gen_random_uuid(),\
+  title text NOT NULL,\
+  sub_title text,\
+  full_explained_idea text,\
+  user_id uuid,\
+  image_url text,\
+  created_at timestamp with time zone DEFAULT now(),\
+  CONSTRAINT ideas_pkey PRIMARY KEY (id),\
+  CONSTRAINT ideas_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id)\
+);\
+CREATE TABLE public.profiles (\
+  uuid uuid NOT NULL,\
+  user_data jsonb,\
+  skills jsonb,\
+  CONSTRAINT profiles_pkey PRIMARY KEY (uuid),\
+  CONSTRAINT profiles_uuid_fkey FOREIGN KEY (uuid) REFERENCES auth.users(id)\
+);\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2  \cf4 \strokec4 CREATE\cf2 \strokec2  \cf4 \strokec4 TABLE\cf2 \strokec2  public\cf5 \strokec5 .\cf2 \strokec2 idea_members \cf5 \strokec5 (\cf2 \cb1 \strokec2 \
+\cb3        id uuid \cf6 \strokec6 NOT\cf2 \strokec2  \cf6 \strokec6 NULL\cf2 \strokec2  \cf4 \strokec4 DEFAULT\cf2 \strokec2  gen_random_uuid\cf5 \strokec5 (),\cf2 \cb1 \strokec2 \
+\cb3        idea_id uuid \cf6 \strokec6 NOT\cf2 \strokec2  \cf6 \strokec6 NULL\cf5 \strokec5 ,\cf2 \cb1 \strokec2 \
+\cb3        user_id uuid \cf6 \strokec6 NOT\cf2 \strokec2  \cf6 \strokec6 NULL\cf5 \strokec5 ,\cf2 \cb1 \strokec2 \
+\cb3        status text \cf6 \strokec6 NOT\cf2 \strokec2  \cf6 \strokec6 NULL\cf2 \strokec2  \cf4 \strokec4 DEFAULT\cf2 \strokec2  \cf7 \strokec7 'pending'\cf5 \strokec5 ,\cf2 \strokec2  \cf8 \strokec8 -- can be 'pending', 'accepted', 'rejected'\cf2 \cb1 \strokec2 \
+\cb3        created_at timestamp \cf4 \strokec4 with\cf2 \strokec2  time zone \cf4 \strokec4 DEFAULT\cf2 \strokec2  now\cf5 \strokec5 (),\cf2 \cb1 \strokec2 \
+\cb3        \cf4 \strokec4 CONSTRAINT\cf2 \strokec2  idea_members_pkey \cf4 \strokec4 PRIMARY\cf2 \strokec2  KEY \cf5 \strokec5 (\cf2 \strokec2 id\cf5 \strokec5 ),\cf2 \cb1 \strokec2 \
+\cb3        \cf4 \strokec4 CONSTRAINT\cf2 \strokec2  idea_members_idea_id_fkey \cf4 \strokec4 FOREIGN\cf2 \strokec2  KEY \cf5 \strokec5 (\cf2 \strokec2 idea_id\cf5 \strokec5 )\cf2 \strokec2  \cf4 \strokec4 REFERENCES\cf2 \strokec2  public\cf5 \strokec5 .\cf2 \strokec2 ideas\cf5 \strokec5 (\cf2 \strokec2 id\cf5 \strokec5 )\cf2 \strokec2  \cf4 \strokec4 ON\cf2 \strokec2  DELETE\cb1 \
+\cb3       CASCADE\cf5 \strokec5 ,\cf2 \cb1 \strokec2 \
+\cb3       \cf4 \strokec4 CONSTRAINT\cf2 \strokec2  idea_members_user_id_fkey \cf4 \strokec4 FOREIGN\cf2 \strokec2  KEY \cf5 \strokec5 (\cf2 \strokec2 user_id\cf5 \strokec5 )\cf2 \strokec2  \cf4 \strokec4 REFERENCES\cf2 \strokec2  auth\cf5 \strokec5 .\cf2 \strokec2 users\cf5 \strokec5 (\cf2 \strokec2 id\cf5 \strokec5 )\cf2 \strokec2  \cf4 \strokec4 ON\cf2 \strokec2  DELETE\cb1 \
+\cb3       CASCADE\cb1 \
+\cb3     \cf5 \strokec5 );\cf2 \cb1 \strokec2 \
+\cb3     \cb1 \
+\cb3     \cf8 \strokec8 -- Table to store messages for each idea\cf2 \cb1 \strokec2 \
+\cb3     \cf4 \strokec4 CREATE\cf2 \strokec2  \cf4 \strokec4 TABLE\cf2 \strokec2  public\cf5 \strokec5 .\cf2 \strokec2 messages \cf5 \strokec5 (\cf2 \cb1 \strokec2 \
+\cb3       id uuid \cf6 \strokec6 NOT\cf2 \strokec2  \cf6 \strokec6 NULL\cf2 \strokec2  \cf4 \strokec4 DEFAULT\cf2 \strokec2  gen_random_uuid\cf5 \strokec5 (),\cf2 \cb1 \strokec2 \
+\cb3       idea_id uuid \cf6 \strokec6 NOT\cf2 \strokec2  \cf6 \strokec6 NULL\cf5 \strokec5 ,\cf2 \cb1 \strokec2 \
+\cb3       sender_id uuid \cf6 \strokec6 NOT\cf2 \strokec2  \cf6 \strokec6 NULL\cf5 \strokec5 ,\cf2 \cb1 \strokec2 \
+\cb3       content text \cf6 \strokec6 NOT\cf2 \strokec2  \cf6 \strokec6 NULL\cf5 \strokec5 ,\cf2 \cb1 \strokec2 \
+\cb3       created_at timestamp \cf4 \strokec4 with\cf2 \strokec2  time zone \cf4 \strokec4 DEFAULT\cf2 \strokec2  now\cf5 \strokec5 (),\cf2 \cb1 \strokec2 \
+\cb3      \cf4 \strokec4 CONSTRAINT\cf2 \strokec2  messages_pkey \cf4 \strokec4 PRIMARY\cf2 \strokec2  KEY \cf5 \strokec5 (\cf2 \strokec2 id\cf5 \strokec5 ),\cf2 \cb1 \strokec2 \
+\cb3       \cf4 \strokec4 CONSTRAINT\cf2 \strokec2  messages_idea_id_fkey \cf4 \strokec4 FOREIGN\cf2 \strokec2  KEY \cf5 \strokec5 (\cf2 \strokec2 idea_id\cf5 \strokec5 )\cf2 \strokec2  \cf4 \strokec4 REFERENCES\cf2 \strokec2  public\cf5 \strokec5 .\cf2 \strokec2 ideas\cf5 \strokec5 (\cf2 \strokec2 id\cf5 \strokec5 )\cf2 \strokec2  \cf4 \strokec4 ON\cf2 \strokec2  DELETE\cb1 \
+\cb3       CASCADE\cf5 \strokec5 ,\cf2 \cb1 \strokec2 \
+\cb3       \cf4 \strokec4 CONSTRAINT\cf2 \strokec2  messages_sender_id_fkey \cf4 \strokec4 FOREIGN\cf2 \strokec2  KEY \cf5 \strokec5 (\cf2 \strokec2 sender_id\cf5 \strokec5 )\cf2 \strokec2  \cf4 \strokec4 REFERENCES\cf2 \strokec2  auth\cf5 \strokec5 .\cf2 \strokec2 users\cf5 \strokec5 (\cf2 \strokec2 id\cf5 \strokec5 )\cf2 \strokec2  \cf4 \strokec4 ON\cf2 \strokec2  DELETE\cb1 \
+\cb3       CASCADE\cb1 \
+\cb3     \cf5 \strokec5 );\cf2 \cb1 \strokec2 \
+}
